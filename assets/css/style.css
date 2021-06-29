@@ -23,6 +23,12 @@ button {
     font-style: italic;
 }
 
+#countdown{
+    color: black;
+    font-weight: bold;
+    font-size: larger;
+}
+
 
 
 .container {

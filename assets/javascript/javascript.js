@@ -14,21 +14,45 @@ THEN I can save my initials and my score */
 /* Creating a starEl variable that is fetching the startButton id */
 var startEl = document.querySelector("#startButton");
 var timerEl = document.querySelector("#countdown");
-var hideEl = document.querySelector("#questionsPage");
-var showEl = document.querySelector("#quizStartPage");
+var pageOneEl = document.querySelector("#questionsPageOne");
+var pageTwoEl = document.querySelector("#questionsPageTwo");
+var startMenuEl = document.querySelector("#quizStartPage");
+/* This section focuses on initialising variables for the buttons */
+var allButtons = document.querySelector(".allButtons")
 
-hideEl.style.display = "none";
+/* var questionOneButton = document.querySelector("#questionOne"); */
+
+
+
+/* hides questionsPageOne and questionspageTwo only showing the start menu */
+pageOneEl.style.display = "none";
+pageTwoEl.style.display = "none";
 
 function showQuestions() {
-console.log("showQuestions function has activated!");
-hideEl
+  console.log("showQuestions function has activated!");
+  /* code hides the startMenuEl and displays the first page of questions */
+  /* Moves to page 1 */
+  startMenuEl.style.display = "none";
+  pageOneEl.style.display = "block";
 
+  allButtons.addEventListener("click",function() {
+  pageOneEl.style.display = "none";
+  pageTwoEl.style.display = "block";
+  })
+  
+  
+  /* questionOneButton.addEventListener("click", function () {
+     /* Comment : moves to page 2 of questions, hdes start-menu and page 1 but only if button 1 is clicked. 
+    startMenuEl.style.display = "none";
+    pageOneEl.style.display = "none";
+    pageTwoEl.style.display = "block";
+  }); */
 
-console.log("showQuestions function has ended.");
+  console.log("showQuestions function has ended.");
 }
 
 function startTimer() {
-    console.log("startTimer function has activated!");
+  console.log("startTimer function has activated!");
   var timeLeft = 1000;
 
   var timeInterval = setInterval(function () {
@@ -48,13 +72,10 @@ function startTimer() {
 
 function startGame() {
   console.log("startGame function has activated!");
-  
-
   console.log("startGame function has ended.");
   /* The previous page will then be removed so that a new page will appear with questions. */
-  showQuestions();
   startTimer();
-  
+  showQuestions();
 }
-
+/* This is the code that gets the start menu to advance to the next functions */
 startEl.addEventListener("click", startGame);
