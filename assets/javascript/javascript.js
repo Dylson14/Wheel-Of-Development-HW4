@@ -4,8 +4,12 @@ WHEN I click the start button
 THEN a timer starts and I am presented with a question
 WHEN I answer a question
 THEN I am presented with another question
+
+
 WHEN I answer a question incorrectly
 THEN time is subtracted from the clock
+
+
 WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
@@ -46,13 +50,17 @@ function showQuestions() {
 
   if (page1) {
     pageOneAllButtons.addEventListener("click", function () {
+  
       console.log("entered page 1 if statement.")
       pageOneEl.style.display = "none";
       pageTwoEl.style.display = "block"; /* moves to page 2 */
       page1 = false; /* page 1 now false because we are no longer on the page */
       page2 = true; /* page 2 true as we are currently on page 2 */
+      showQuestions();
     });
+    
   }
+
 
   if (page2) {
     pageTwoAllButtons.addEventListener("click", function () {
@@ -61,8 +69,10 @@ function showQuestions() {
       pageThreeEl.style.display = "block";
       page2 = false;
       page3 = true;
+      showQuestions();
     });
   }
+
 
   /* questionOneButton.addEventListener("click", function () {
      /* Comment : moves to page 2 of questions, hdes start-menu and page 1 but only if button 1 is clicked. 
