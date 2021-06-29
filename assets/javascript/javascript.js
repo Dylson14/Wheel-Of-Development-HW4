@@ -18,12 +18,15 @@ var pageOneEl = document.querySelector("#questionsPageOne");
 var pageTwoEl = document.querySelector("#questionsPageTwo");
 var pageThreeEl = document.querySelector("#questionsPageThree");
 var startMenuEl = document.querySelector("#quizStartPage");
-var startMenu = true;
+
+var startMenu = true; /* startMenu is true because the webpage first begins only showing the startmenu. */
 var page1 = false;
 var page2 = false;
 var page3 = false;
 /* This variable focuses on initialising variables for the buttons */
-var allButtons = document.querySelector(".allButtons");
+var pageOneAllButtons = document.querySelector(".pageOneAllButtons");
+var pageTwoAllButtons = document.querySelector(".pageTwoAllButtons");
+var pageThreeAllButtons = document.querySelector(".pageThreeAllButtons");
 /* var questionOneButton = document.querySelector("#questionOne"); */
 
 /* hides questionsPageOne and questionspageTwo only showing the start menu */
@@ -40,26 +43,26 @@ function showQuestions() {
     startMenu = false; /* startMenu now false because we are no longer on the page */
     page1 = true; /* page 1 is true as we are currently on page 1 */
   }
- 
+
   if (page1) {
-    allButtons.addEventListener("click", function () {
+    pageOneAllButtons.addEventListener("click", function () {
+      console.log("entered page 1 if statement.")
       pageOneEl.style.display = "none";
-      pageTwoEl.style.display = "block";  /* moves to page 2 */
+      pageTwoEl.style.display = "block"; /* moves to page 2 */
       page1 = false; /* page 1 now false because we are no longer on the page */
       page2 = true; /* page 2 true as we are currently on page 2 */
     });
   }
 
   if (page2) {
-    allButtons.addEventListener("click", function () {
+    pageTwoAllButtons.addEventListener("click", function () {
+      console.log("entered page 2 if statement.")
       pageTwoEl.style.display = "none";
-      pageThreeEl.style.display = "block";  
-      page2 = false; 
+      pageThreeEl.style.display = "block";
+      page2 = false;
       page3 = true;
     });
   }
-
- 
 
   /* questionOneButton.addEventListener("click", function () {
      /* Comment : moves to page 2 of questions, hdes start-menu and page 1 but only if button 1 is clicked. 
@@ -90,7 +93,7 @@ function startTimer() {
   console.log("startTimer function has ended");
 }
 
-function startGame() {
+function startQuiz() {
   console.log("startGame function has activated!");
   console.log("startGame function has ended.");
   /* The previous page will then be removed so that a new page will appear with questions. */
@@ -98,4 +101,4 @@ function startGame() {
   showQuestions();
 }
 /* This is the code that gets the start menu to advance to the next functions */
-startButtonEl.addEventListener("click", startGame);
+startButtonEl.addEventListener("click", startQuiz);
