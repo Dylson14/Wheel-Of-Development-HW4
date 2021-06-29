@@ -12,35 +12,55 @@ WHEN the game is over
 THEN I can save my initials and my score */
 
 /* Creating a starEl variable that is fetching the startButton id */
-var startEl = document.querySelector("#startButton");
+var startButtonEl = document.querySelector("#startButton");
 var timerEl = document.querySelector("#countdown");
 var pageOneEl = document.querySelector("#questionsPageOne");
 var pageTwoEl = document.querySelector("#questionsPageTwo");
+var pageThreeEl = document.querySelector("#questionsPageThree");
 var startMenuEl = document.querySelector("#quizStartPage");
-/* This section focuses on initialising variables for the buttons */
-var allButtons = document.querySelector(".allButtons")
-
+var startMenu = true;
+var page1 = false;
+var page2 = false;
+var page3 = false;
+/* This variable focuses on initialising variables for the buttons */
+var allButtons = document.querySelector(".allButtons");
 /* var questionOneButton = document.querySelector("#questionOne"); */
-
-
 
 /* hides questionsPageOne and questionspageTwo only showing the start menu */
 pageOneEl.style.display = "none";
 pageTwoEl.style.display = "none";
+pageThreeEl.style.display = "none";
 
 function showQuestions() {
   console.log("showQuestions function has activated!");
   /* code hides the startMenuEl and displays the first page of questions */
-  /* Moves to page 1 */
-  startMenuEl.style.display = "none";
-  pageOneEl.style.display = "block";
+  if (startMenu) {
+    startMenuEl.style.display = "none"; /* hides start-menu */
+    pageOneEl.style.display = "block"; /* Moves to page 1 */
+    startMenu = false; /* startMenu now false because we are no longer on the page */
+    page1 = true; /* page 1 is true as we are currently on page 1 */
+  }
+ 
+  if (page1) {
+    allButtons.addEventListener("click", function () {
+      pageOneEl.style.display = "none";
+      pageTwoEl.style.display = "block";  /* moves to page 2 */
+      page1 = false; /* page 1 now false because we are no longer on the page */
+      page2 = true; /* page 2 true as we are currently on page 2 */
+    });
+  }
 
-  allButtons.addEventListener("click",function() {
-  pageOneEl.style.display = "none";
-  pageTwoEl.style.display = "block";
-  })
-  
-  
+  if (page2) {
+    allButtons.addEventListener("click", function () {
+      pageTwoEl.style.display = "none";
+      pageThreeEl.style.display = "block";  
+      page2 = false; 
+      page3 = true;
+    });
+  }
+
+ 
+
   /* questionOneButton.addEventListener("click", function () {
      /* Comment : moves to page 2 of questions, hdes start-menu and page 1 but only if button 1 is clicked. 
     startMenuEl.style.display = "none";
@@ -78,4 +98,4 @@ function startGame() {
   showQuestions();
 }
 /* This is the code that gets the start menu to advance to the next functions */
-startEl.addEventListener("click", startGame);
+startButtonEl.addEventListener("click", startGame);
