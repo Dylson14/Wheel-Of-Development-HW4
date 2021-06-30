@@ -24,9 +24,7 @@ var pageThreeEl = document.querySelector("#questionsPageThree");
 var startMenuEl = document.querySelector("#quizStartPage");
 
 var startMenu = true; /* startMenu is true because the webpage first begins only showing the startmenu. */
-var page1 = false;
-var page2 = false;
-var page3 = false;
+
 /* This variable focuses on initialising variables for the buttons */
 var pageOneAllButtons = document.querySelector(".pageOneAllButtons");
 var pageTwoAllButtons = document.querySelector(".pageTwoAllButtons");
@@ -42,16 +40,12 @@ pageOneAllButtons.addEventListener("click", function () {
   console.log("entered pageOneAllButtons.")
   pageOneEl.style.display = "none";
   pageTwoEl.style.display = "block"; /* moves to page 2 */
-  page1 = false; /* page 1 now false because we are no longer on the page */
-  page2 = true; /* page 2 true as we are currently on page 2 */
 });
 
 pageTwoAllButtons.addEventListener("click", function () {
   console.log("entered pageTwoAllButtons.")
   pageTwoEl.style.display = "none";
   pageThreeEl.style.display = "block";
-  page2 = false;
-  page3 = true;
 });
 
 function showQuestions() {
@@ -60,8 +54,6 @@ function showQuestions() {
   if (startMenu) {
     startMenuEl.style.display = "none"; /* hides start-menu */
     pageOneEl.style.display = "block"; /* Moves to page 1 */
-    startMenu = false; /* startMenu now false because we are no longer on the page */
-    page1 = true; /* page 1 is true as we are currently on page 1 */
   }
 
   console.log("showQuestions function has ended.");
