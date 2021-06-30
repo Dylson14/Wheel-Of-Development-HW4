@@ -38,6 +38,22 @@ pageOneEl.style.display = "none";
 pageTwoEl.style.display = "none";
 pageThreeEl.style.display = "none";
 
+pageOneAllButtons.addEventListener("click", function () {
+  console.log("entered pageOneAllButtons.")
+  pageOneEl.style.display = "none";
+  pageTwoEl.style.display = "block"; /* moves to page 2 */
+  page1 = false; /* page 1 now false because we are no longer on the page */
+  page2 = true; /* page 2 true as we are currently on page 2 */
+});
+
+pageTwoAllButtons.addEventListener("click", function () {
+  console.log("entered pageTwoAllButtons.")
+  pageTwoEl.style.display = "none";
+  pageThreeEl.style.display = "block";
+  page2 = false;
+  page3 = true;
+});
+
 function showQuestions() {
   console.log("showQuestions function has activated!");
   /* code hides the startMenuEl and displays the first page of questions */
@@ -47,39 +63,6 @@ function showQuestions() {
     startMenu = false; /* startMenu now false because we are no longer on the page */
     page1 = true; /* page 1 is true as we are currently on page 1 */
   }
-
-  if (page1) {
-    pageOneAllButtons.addEventListener("click", function () {
-  
-      console.log("entered page 1 if statement.")
-      pageOneEl.style.display = "none";
-      pageTwoEl.style.display = "block"; /* moves to page 2 */
-      page1 = false; /* page 1 now false because we are no longer on the page */
-      page2 = true; /* page 2 true as we are currently on page 2 */
-      showQuestions();
-    });
-    
-  }
-
-
-  if (page2) {
-    pageTwoAllButtons.addEventListener("click", function () {
-      console.log("entered page 2 if statement.")
-      pageTwoEl.style.display = "none";
-      pageThreeEl.style.display = "block";
-      page2 = false;
-      page3 = true;
-      showQuestions();
-    });
-  }
-
-
-  /* questionOneButton.addEventListener("click", function () {
-     /* Comment : moves to page 2 of questions, hdes start-menu and page 1 but only if button 1 is clicked. 
-    startMenuEl.style.display = "none";
-    pageOneEl.style.display = "none";
-    pageTwoEl.style.display = "block";
-  }); */
 
   console.log("showQuestions function has ended.");
 }
